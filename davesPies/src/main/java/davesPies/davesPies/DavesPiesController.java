@@ -12,8 +12,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class DavesPiesController {
 
-    private static final List<String> pies = new ArrayList<>();
-    private static final List<String> employees = new ArrayList<>();
+    private static final List<Products> pies = new ArrayList<>();
+    private static final List<Employees> employees = new ArrayList<>();
+
+    static {
+        pies.add(new Products("Meat", "A fine combination of endangered animals."));
+        pies.add(new Products("Veg", "Eugh!"));
+        pies.add(new Products("Cheese", "Cheesy goodness"));
+        pies.add(new Products("Extra Meat", "Like meat but with extra baby seal."));
+        employees.add(new Employees("David","david@david.com"));
+        employees.add(new Employees("Kat", "kat@kat.com"));
+        
+    }
 
     @GetMapping("/index")
     String getIndex(Model model) {
@@ -23,13 +33,13 @@ public class DavesPiesController {
 
     @GetMapping("/products")
     String getProducts(Model model) {
-        System.out.println("products");
+        model.addAttribute("pies", pies);
         return "/products";
     }
 
     @GetMapping("/employees")
     String getEmployees(Model model) {
-        System.out.println("employees");
+        model.addAttribute("employees", employees);
         return "/employees";
     }
     

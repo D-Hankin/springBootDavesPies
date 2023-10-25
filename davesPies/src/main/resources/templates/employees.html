@@ -8,5 +8,8 @@
 <body>
     <h1>Staff</h1>
     <a th:href="@{/}">Home</a>
+    <ul>
+        <li th:each="item : ${employees}"><span th:text="${item.employeeName}"></span> - <span th:text="${item.employeeEmail}"></span> </li>
+    </ul>
 </body>
 </html>
