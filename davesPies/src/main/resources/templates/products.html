@@ -7,5 +7,9 @@
 </head>
 <body>
     <h1>Pies</h1>
+    <a th:href="@{/}">Home</a>
+    <ul>
+        <li th:each="item : ${pies}"><span th:text="${item.pieName}"></span> - <span th:text="${item.pieDescription}"></span></li>
+    </ul>
 </body>
 </html>
